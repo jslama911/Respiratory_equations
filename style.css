@@ -1,0 +1,55 @@
+ body{
+    background-color: #cec8c8;
+    text-align: center;
+ }
+ 
+ /* Style the button that is used to open and close the collapsible content */
+ .collapsible {
+    background-color: #9fd3c7;
+    color: #444;
+    cursor: pointer;
+    padding: 25px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .collapsible:hover {
+    background-color: #385170;
+    color: #fff;
+  }
+  
+  /* Style the collapsible content. Note: hidden by default */
+  .content {
+    padding:18px;
+    display: none;
+    overflow: hidden;
+    background-color: #142d4c;
+    color: #fff;
+  } 
+
+.result{
+    padding: 15px;
+    color: #afffec;
+}
+
+.calc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*add functionality to change the color of the calculator and text*/
+.calcButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: CHARTREUSE;
+    background-color: black;
+    padding:45px;
+
+}

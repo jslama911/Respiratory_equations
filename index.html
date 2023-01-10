@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respiratory Equations</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+    <h1>Common respiratory equations</h1>
+    <p>Here are some commonly used respiratory equations and a simple calculator.</p>
+
+    <!--Alveolar gas equation-->
+
+    <button class="collapsible">Alveolar gas equation(PAO2)</button>
+    <div class="content">
+
+    <h3>Alveolar gas equation</h3>
+    <p>PAO2 = (FiO2 × (Patm - PH2O) - (PaCO2 / RQ)</p>
+    <div>
+        <input type="text" id="PAO2_fiO2" placeholder=".21">FiO2</input>
+        <input type="text" id="patm" placeholder="760">Patm</input>
+        <input type="text" id="ph2O" placeholder="47">PH2O</input>
+        <input type="text" id="paCo2" placeholder="35-45">PaCO2</input>
+        <input type="text" id="rq" placeholder="0.8">RQ</input>
+        <button onclick="calculateAlveolarGasEquation()">Go!</button>
+    </div>
+    <div class="result" id="alveolarGasEquationResult"></div>
+</div>
+   
+    <!--PaO2/FiO2 Ratio (P/F Ratio)-->
+
+    <button class="collapsible">P/F Ratio</button>
+    <div class="content">
+    
+    <h3>PaO2/FiO2 Ratio (P/F Ratio)</h3>
+    <p>P/F Ratio = (PaO2 / FiO2)</p>
+
+    <div>
+        <input type="text" id="paO2" placeholder="100">PaO2</input>
+        <input type="text" id="PF_fiO2" placeholder=".21">FiO2</input>
+        <button onclick="calculatePFRatio()">Go!</button>
+    </div>
+    <div class="result" id="pfRatioResult"></div>
+    </div>
+    
+    <!--Minute Ventilation (VE)-->
+
+    <button class="collapsible">Minute Ventilation (VE)</button>
+    <div class="content">
+    <h3>Minute Ventilation (VE)</h3>
+    <p>VE = (RR × VT)</p>
+
+    <div>
+        <input type="text" id="rr" placeholder="12">RR</input>
+        <input type="text" id="vt" placeholder="500">VT</input>
+        <button onclick="calculateVE()">Go!</button>
+    </div>
+    <div class="result" id="veResult"></div>
+    </div>
+    
+    <!--Alveolar Minute Ventilation-->
+
+    <button class="collapsible">Alveolar Minute Ventilation(VA)</button>
+    <div class="content">
+    <h3>Alveolar Minute Ventilation(VA)</h3>
+    <p>VA = Respiratory Rate x (Tidal Volume – Deadspace)</p>
+    <input type="text" id="rrVA" placeholder="12">RR</input>
+    <input type="text" id="vtVA" placeholder="500">VT</input>
+    <input type="text" id="deadSpaceVA" placeholder="150">Deadspace</input>
+    <button onclick="calculateVA()">Go!</button>
+    <div class="result" id="vaResult"></div>
+    </div>
+    
+    <!--Ideal body weight-->
+    
+    <button class="collapsible">Ideal Body Weight</button>
+    <div class="content">
+    <h3>Ideal Body Weight</h3>
+    <p>Females: IBW = (105 + 5 × (height in inches - 60))</p>
+    <p>Males: IBW = (105 + 6 × (height in inches - 60))</p>
+    <input type="radio" name="gender" id="male">Male</input>
+    <input type="radio" name="gender" id="female">Female</input>
+    <input type="text" id="height" placeholder="70">Height</input>
+    <button onclick="calculateIBW()">Go!</button>
+    <div class="result" id="ibwResult"></div>
+    </div>
+
+    <!--RSBI-->
+
+    <button class="collapsible">Rapid Shallow Breathing Index (RSBI)</button>
+    <div class="content">
+    <h3>Rapid Shallow Breathing Index (RSBI)</h3>
+    <p>RSBI = Rate / Tidal Volume</p>
+    <input type="text" id="rrRSBI" placeholder="12">Rate</input>
+    <input type="text" id="vtRSBI" placeholder="500">Tidal Volume</input>
+    <button onclick="calculateRSBI()">Go!</button>
+    <div class="result" id="rsbiResult"></div>
+    </div>
+
+    <!--FiO2 est for NC-->
+
+    <button class="collapsible">FiO2 Estimation for Nasal Cannula</button>
+<div class="content">
+
+    <h3>FiO2 Estimation for Nasal Cannula</h3>
+    <p>FiO2 = 20 + (4 x Liter Flow)</p>
+
+    <div>
+        <input type="text" id="literFlow" placeholder="2">Liter Flow</input>
+        <button onclick="calculateFiO2()">Go!</button>
+    </div>
+    <div class="result" id="fio2Result"></div>
+</div>
+
+<!--Cardiac Index-->
+
+<button class="collapsible">Cardiac Index (CI)</button>
+<div class="content">
+
+    <h3>Cardiac Index (CI)</h3>
+    <p>CI = Cardiac Output / Body Surface Area</p>
+
+    <div>
+        <input type="text" id="cardiacOutput" placeholder="5">Cardiac Output</input>
+        <input type="text" id="bodySurfaceArea" placeholder="2">Body Surface Area</input>
+        <button onclick="calculateCI()">Go!</button>
+    </div>
+    <div class="result" id="ciResult"></div>
+</div>
+
+<!--Cardiac Output(QT)-->
+
+<button class="collapsible">Cardiac Output (QT)</button>
+<div class="content">
+
+    <h3>Cardiac Output (QT)</h3>
+    <p>QT = Heart Rate x Stroke Volume</p>
+
+    <div>
+        <input type="text" id="heartRate" placeholder="80">Heart Rate</input>
+        <input type="text" id="strokeVolume" placeholder="70">Stroke Volume</input>
+        <button onclick="calculateQT()">Go!</button>
+    </div>
+    <div class="result" id="qtResult"></div>
+</div>
+
+<!--Cardiac Output(Fick's)-->
+
+<button class="collapsible">Cardiac Output (CO) Fick’s Method</button>
+<div class="content">
+
+    <h3>Cardiac Output (CO) Fick’s Method</h3>
+    <p>CO = (O2 Consumption / CaO2 – CvO2)</p>
+
+    <div>
+        <input type="text" id="o2Consumption" placeholder="5">O2 Consumption</input>
+        <input type="text" id="caO2" placeholder="20">CaO2</input>
+        <input type="text" id="cvO2" placeholder="15">CvO2</input>
+        <button onclick="calculateCO()">Go!</button>
+    </div>
+    <div class="result" id="coResult"></div>
+</div>
+
+<!--MAP-->
+
+<button class="collapsible">Mean Arterial Pressure (MAP)</button>
+<div class="content">
+
+    <h3>Mean Arterial Pressure (MAP)</h3>
+    <p>MAP = (Systolic BP + (2 x Diastolic BP)) / 3</p>
+
+    <div>
+        <input type="text" id="systolicBP" placeholder="120">Systolic BP</input>
+        <input type="text" id="diastolicBP" placeholder="80">Diastolic BP</input>
+        <button onclick="calculateMAP()">Go!</button>
+    </div>
+    <div class="result" id="mapResult"></div>
+</div>
+
+<!--SV-->
+
+<button class="collapsible">Stroke Volume (SV)</button>
+<div class="content">
+
+    <h3>Stroke Volume (SV)</h3>
+    <p>SV = Cardiac Output / Heart Rate</p>
+
+    <div>
+        <input type="text" id="cardiacOutputSV" placeholder="70">Cardiac Output</input>
+        <input type="text" id="heartRateSV" placeholder="80">Heart Rate</input>
+        <button onclick="calculateSV()">Go!</button>
+    </div>
+    <div class="result" id="svResult"></div>
+</div>
+
+
+<!--HRMax-->
+
+<button class="collapsible">Maximum Heart Rate (HRmax)</button>
+<div class="content">
+
+    <h3>Maximum Heart Rate (HRmax)</h3>
+    <p>HRmax = 220 – Age</p>
+
+    <div>
+        <input type="text" id="age" placeholder="35">Age</input>
+        <button onclick="calculateHRmax()">Go!</button>
+    </div>
+    <div class="result" id="hrmaxResult"></div>
+</div>
+
+<!--SVR-->
+
+<button class="collapsible">Systemic Vascular Resistance (SVR)</button>
+<div class="content">
+
+    <h3>Systemic Vascular Resistance (SVR)</h3>
+    <p>SVR = (MAP – CVP) x (80 / Cardiac Output)</p>
+
+    <div>
+        <input type="text" id="mapSVR" placeholder="120">MAP</input>
+        <input type="text" id="cvpSVR" placeholder="4">CVP</input>
+        <input type="text" id="cardiacOutputSVR" placeholder="5">Cardiac Output</input>
+        <button onclick="calculateSVR()">Go!</button>
+    </div>
+    <div class="result" id="svrResult"></div>
+</div>
+
+<!--PVR-->
+<button class="collapsible">Pulmonary Vascular Resistance (PVR)</button>
+<div class="content">
+
+    <h3>Pulmonary Vascular Resistance (PVR)</h3>
+    <p>PVR = (MPAP – PCWP) x (80 / Cardiac Output)</p>
+
+    <div>
+        <input type="text" id="mpap" placeholder="20">MPAP</input>
+        <input type="text" id="pcwp" placeholder="15">PCWP</input>
+        <input type="text" id="cardiacOutputPVR" placeholder="5">Cardiac Output</input>
+        <button onclick="calculatePVR()">Go!</button>
+    </div>
+
+    <div class="result" id="pvrResult"></div>
+</div>
+    
+<!--Cst-->
+
+<button class="collapsible">Static Compliance (Cst)</button>
+<div class="content">
+    <h3>Static Compliance (Cst)</h3>
+    <p>Cst = Tidal Volume / (Plateau Pressure – PEEP)</p>
+
+    <div>
+        <input type="text" id="tidalVolumeCst" placeholder="500">Tidal Volume</input>
+        <input type="text" id="plateauPressureCst" placeholder="20">Plateau Pressure</input>
+        <input type="text" id="peepCst" placeholder="5">PEEP</input>
+        <button onclick="calculateCst()">Go!</button>
+    </div>
+    <div class="result" id="cstResult"></div>
+</div>
+
+<!--Cdyn-->
+
+<button class="collapsible">Dynamic Compliance (Cdyn)</button>
+<div class="content">
+    <h3>Dynamic Compliance (Cdyn)</h3>
+    <p>Cdyn = Tidal Volume / (Peak Pressure – PEEP)</p>
+
+    <div>
+        <input type="text" id="tidalVolumeCdyn" placeholder="500">Tidal Volume</input>
+        <input type="text" id="peakPressureCdyn" placeholder="25">Peak Pressure</input>
+        <input type="text" id="peepCdyn" placeholder="5">PEEP</input>
+        <button onclick="calculateCdyn()">Go!</button>
+    </div>
+    <div class="result" id="cdynResult"></div>
+</div>
+
+    <!--Simple calculator if all else fails-->
+    
+    <button class="collapsible">Simple Calculator</button>
+    <div class="content">
+    <h3>Simple Calculator</h3>
+    <div class="calc">
+
+	<table class="calculator">
+		<tr>
+		<td colspan="3"><input class="calcButton" type="text" class="display" id="result" > </td>
+		<td> <input class="calcButton" type="button" value="c" onclick="clearScreen()"/> </td>
+	</tr>
+	<tr>
+	<td> <input class="calcButton" type="button" value="1" onclick="display('1')"/> </td>
+	<td> <input class="calcButton" type="button" value="2" onclick="display('2')"/> </td>
+	<td> <input class="calcButton" type="button" value="3" onclick="display('3')"/> </td>
+	<td> <input class="calcButton" type="button" value="/" onclick="division('/')"/> </td>
+</tr>
+
+<tr>
+	<td> <input class="calcButton" type="button" value="4" onclick="display('4')"/> </td>
+	<td> <input class="calcButton" type="button" value="5" onclick="display('5')"/> </td>
+	<td> <input class="calcButton" type="button" value="6" onclick="display('6')"/> </td>
+	<td> <input class="calcButton" type="button" value="*" onclick="multiply('*')"/> </td>
+</tr>
+
+<tr>
+	<td> <input class="calcButton" type="button" value="7" onclick="display('7')"/> </td>
+	<td> <input class="calcButton" type="button" value="8" onclick="display('8')"/> </td>
+	<td> <input class="calcButton" type="button" value="9" onclick="display('9')"/> </td>
+	<td> <input class="calcButton" type="button" value="-" onclick="subtraction('-')"/> </td>
+</tr>
+
+<tr>
+	<td> <input class="calcButton" type="button" value="0" onclick="display('0')"/> </td>
+	<td> <input class="calcButton" type="button" value="." onclick="display('.')"/> </td>
+	<td> <input class="calcButton" type="button" value="=" onclick="calculate()"/> </td>
+	<td> <input class="calcButton" type="button" value="+" onclick="addition('+')"/> </td>
+</tr>
+</table>
+    </div>
+    </div>
+
+    <div class="bottom">
+        <h3>Let me know if there is anything you would want to see added or any features you might want to see!</h3>
+        <a href="mailto:jslama911@gmail.com">Email me!<a>
+            <p>John Slama RRT</p>
+    </div>
+
+    
+
+</body>
+<script src="script.js"></script> 
+</html>
